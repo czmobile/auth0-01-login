@@ -29,15 +29,40 @@
     function handleAuthentication() {
       angularAuth0.parseHash(function(err, authResult) {
         if (authResult && authResult.accessToken && authResult.idToken) {
+
+
+
+           // if ( user.email_verified ) {
+      //     // if ( 1 > 0 ) {
+        //   // alert("your email 1 is already verified, so you can order a Pizza!! :)" + idToken);}
+
+          // // else
+           // //{ alert("your email 1 is not yet verified, so you can not order a Pizza until you verify it :(");
+          // // }
+
+
+
           localLogin(authResult);
           $state.go('home');
-        } else if (err) {
-          $timeout(function() {
+
+
+        }
+
+
+
+        else if (err) {
+           $timeout(function() {
+
             $state.go('home');
           });
           console.log(err);
-          alert('Error: ' + err.error + '. Check the console for further details.');
-        }
+
+// alert("Remember to verify your email so you can then order a Pizza!!");
+
+         alert('Error: ' + err.error + '. Check the console for further details.');
+         }
+
+
       });
     }
 
@@ -55,6 +80,7 @@
         function(err, result) {
           if (err) {
             console.log(err);
+              localLogin(result);
           } else {
             localLogin(result);
           }
@@ -73,7 +99,7 @@
     }
 
     function isAuthenticated() {
-      // Check whether the current time is past the 
+      // Check whether the current time is past the
       // access token's expiry time
       return localStorage.getItem('isLoggedIn') === 'true' && new Date().getTime() < expiresAt;
     }

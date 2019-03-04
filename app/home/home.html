@@ -1,9 +1,25 @@
 <h1>Welcome to Pizza 42!!!</h1>
 <!-- <h3>Please login with your current credentials or register a new account</h3> -->
 
+
+<!-- <script> -->
+  <!-- var str = 'hello there'; -->
+  <!-- document.getElementById('para').innerHTML = str; -->
+<!-- </script> -->
+
+
+
 <h4 ng-if="vm.auth.isAuthenticated()">
     You are logged in!
+    But, your email address is not verified yet.
+    Please verify your email address to place an order!
+
 </h4>
+
+<!-- <h4 ng-if="vm.auth.isAuthenticated() && !user.email_verified"> -->
+    <!-- You are logged in! Please remember that you need to verify your email to be able to order a Pizza! -->
+<!-- </h4> -->
+
 <h4 ng-if="!vm.auth.isAuthenticated()">
   You are not logged in! Please <a ng-click="vm.auth.login()">Log In</a> to continue.
 </h4>
